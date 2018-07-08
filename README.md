@@ -60,9 +60,9 @@ At the same time, all the users who are playing would end their current session,
 
 
 
-
-
 # Data Set Overview
+
+## Profiles and Clicks 
 The table below lists each of the files available for analysis with a short description of what is found in each one.
 
  File Name	| Description	| Fields 
@@ -77,7 +77,17 @@ user-session.csv | Each line in this file describes a user session, which denote
 game-clicks.csv	| A line is added to this file each time a user performs a click in the game. |	timestamp: when the click occurred. <br/><br/>clickId: a unique id for the click. <br/><br/>userId: the id of the user performing the click. <br/><br/>userSessionId: the id of the session of the user when the click is performed. <br/><br/>isHit: denotes if the click was on a flamingo (value is 1) or missed the flamingo (value is 0). <br/><br/>teamId: the id of the team of the user. <br/><br/>teamLevel: the current level of the team of the user.
 combined_data.csv | Combines data from 3 of the log files: user-session.csv, buy-clicks.csv, and game-clicks.csv. | userid: User ID <br/><br/>userSessionid: User session ID <br/><br/>team_level: User’s team level <br/><br/>platformType: Platform used by user <br/><br/>count_gameclicks: Total number of game clicks for user session <br/><br/>count_hits: Total number of game hits for user session <br/><br/>count_buyid: Total number of purchases for user session <br/><br/>avg_price: Average purchase price for user session
 				
-		
+## Schema of the Graph Database for Chats
+The schema of the 6 CSV files used to construct the graph database for chats is described in the table below.
+
+File Name | Description | Example
+|:--- | :--- | ---:|
+chat_create_team_chat.csv | A line is added to this file when a player creates a new chat with their team. | userid, teamid, TeamChatSessionID, timestamp<br/><br/> 559,48,6288,14567<br/><br/> 876,15,6289,24244<br/><br/> 1166,68,6290,65522
+chat_item_team_chat.csv | Creates nodes labeled ChatItems. Column 0 is User id, column 1 is the TeamChatSession id, column 2 is the ChatItem id (i.e., the id property of the ChatItem node), column 3 is the timestamp for an edge labeled "CreateChat". Also creates an edge labeled "PartOf" from the ChatItem node to the TeamChatSession node. This edge has a timeStamp property using the value from Column 3. | userid, teamchatsessionid, chatitemid, timestamp<br/><br/> 1,956,629,963,051,460,000,000<br/><br/> 2,081,629,663,111,460,000,000<br/><br/> 1,166,629,063,161,460,000,000
+chat_join_team_chat.csv | Creates an edge labeled "Joins" from User to TeamChatSession. The columns are the User id, TeamChatSession id and the timestamp of the Joins edge. | userid, TeamChatSessionID, teamstamp<br/><br/> 559,628,812,345<br/><br/> 876,628,915,468<br/><br/> 1,166,629,015,648
+chat_leave_team_chat.csv | Creates an edge labeled "Leaves" from User to TeamChatSession. The columns are the User id, TeamChatSession id and the timestamp of the Leaves edge. | userid, teamchatsessionid, timestamp<br/><br/> 124,468,211,464,241,000.00<br/><br/> 107,468,381,464,243,000.00<br/><br/> 35,067,771,464,246,600.00
+chat_mention_team_chat.csv | Creates an edge labeled "Mentioned". Column 0 is the id of the ChatItem, column 1 is the id of the User, and column 2 is the timeStamp of the edge going from the chatItem to the User. | ChatItem, userid, timeStamp<br/><br/> 63,492,508<br/><br/> 63,662,491<br/><br/> 6,371,104
+chat_respond_team_chat.csv | A line is added to this file when player with chatid2 responds to a chat post by another player with chatid1. | chatid1, chatid2, timestamp<br/><br/> 6,326,630,521,564<br/><br/> 6,364,632,654,544<br/><br/> 6,371,636,654,567
 		
 		
 		

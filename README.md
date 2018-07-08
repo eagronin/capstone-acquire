@@ -88,7 +88,14 @@ chat_join_team_chat.csv | Creates an edge labeled "Joins" from User to TeamChatS
 chat_leave_team_chat.csv | Creates an edge labeled "Leaves" from User to TeamChatSession. The columns are the User id, TeamChatSession id and the timestamp of the Leaves edge. | userid, teamchatsessionid, timestamp<br/><br/> 124,468,211,464,241,000.00<br/> 107,468,381,464,243,000.00<br/> 35,067,771,464,246,600.00
 chat_mention_team_chat.csv | Creates an edge labeled "Mentioned". Column 0 is the id of the ChatItem, column 1 is the id of the User, and column 2 is the timeStamp of the edge going from the chatItem to the User. | ChatItem, userid, timeStamp<br/><br/> 63,492,508<br/> 63,662,491<br/> 6,371,104
 chat_respond_team_chat.csv | A line is added to this file when player with chatid2 responds to a chat post by another player with chatid1. | chatid1, chatid2, timestamp<br/><br/> 6,326,630,521,564<br/> 6,364,632,654,544<br/> 6,371,636,654,567
-		
-		
-		
-		
+
+Each of the 6 CSV files was loaded into Neo4j using the LOAD CSV command that reads each row of the file and then assigns the imported values to the nodes and edges of the graph.  
+
+For example, the code below loads the nodes and values from chat_join_team_chat.csv.  Each row in this file has 3 values: userid, TeamChatSessionID and teamStamp.  As the code reads each row of the file, it merges the imported value from the first column with a node of the type “User”, the value from the second column with a node of the type “TeamChatSession” and the value from the third column with an edge of the type “timeStamp”.  The code also specifies that this edge links each User to the User’s TeamChatSession.
+
+```GraphQL
+LOAD CSV FROM "file:///chat-data/chat_join_team_chat.csv" AS row 
+MERGE (u:User {id: toInteger(row[0])}) 
+MERGE (c:TeamChatSession {id: toInteger(row[1])}) 
+MERGE (u)-[:Join{timeStamp: row[2]}]->(c)
+```

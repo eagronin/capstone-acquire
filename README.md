@@ -12,13 +12,13 @@ This section is organized as follows:
 **Introduction**<br/>
 **Description of Catch The Pink Flamingo Online Game**<br/>
 **Overview of the Catch the Pink Flamingo Data Model**<br/>
-	- Gameplay<br/>
-	- Simulation Overview<br/>
-	- General User Sessions and Team-assignments<br/>
-	- Leveling Up and More on User Sessions<br/>
+- Gameplay<br/>
+- Simulation Overview<br/>
+- General User Sessions and Team-assignments<br/>
+- Leveling Up and More on User Sessions<br/>
 **Data Set Overview**<br/>
-	- Data on In-App Purchases, Ad Clicks and Game-Specific Information<br/>
-	- Schema of the Graph Database for Chats<br/>
+- Data on In-App Purchases, Ad Clicks and Game-Specific Information<br/>
+- Schema of the Graph Database for Chats<br/>
 
 
 Data exploration is described in the [next section]().

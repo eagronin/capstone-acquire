@@ -22,7 +22,7 @@ This section is organized as follows:
 - Schema of the Graph Database for Chats<br/>
 
 
-Data exploration is described in the [next section]().
+Data exploration is described in the [next section](https://eagronin.github.io/capstone-prepare/).
 
 
 # Description of Catch The Pink Flamingo Online Game

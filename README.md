@@ -22,16 +22,9 @@ There are some things to consider while designing an information system for this
 
 # Data Set Overview
 
-| File Name	| Description	| Fields |
+ File Name	| Description	| Fields 
 |:--- | :--- |:--- |
-| ad-clicks.csv |	A line is added to this file when a player clicks on an advertisement in the Flamingo app. |	timestamp: when the click occurred. | txId: a unique id (within ad-clicks.log) for the click. userSessionid: the id of the user session for the user who made the click. teamid: the current team id of the user who made the click. userid: the user id of the user who made the click. adId: the id of the ad clicked on. adCategory: the category/type of ad clicked on |
-|buy-clicks.csv	| A line is added to this file when a player makes an in-app purchase in the Flamingo app. |	"timestamp: when the purchase was made.
-txId: a unique id (within buy-clicks.log) for the purchase
-userSessionId: the id of the user session for the user who made the purchase
-team: the current team id of the user who made the purchase
-userId: the user id of the user who made the purchase
-buyId: the id of the item purchased
-price: the price of the item purchased" |
+ ad-clicks.csv | A line is added to this file when a player clicks on an advertisement in the Flamingo app. | timestamp: when the click occurred. | txId: a unique id (within ad-clicks.log) for the click. userSessionid: the id of the user session for the user who made the click. teamid: the current team id of the user who made the click. userid: the user id of the user who made the click. adId: the id of the ad clicked on. adCategory: the category/type of ad clicked on.
 		
 		
 		

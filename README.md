@@ -9,10 +9,18 @@ The analysis in this project was performed using Python, Spark, KNIME and Neo4j.
 
 This section is organized as follows:
 
-Data Set Overview
+**Introduction**<br/>
+**Description of Catch The Pink Flamingo Online Game**<br/>
+**Overview of the Catch the Pink Flamingo Data Model**<br/>
+	**Gameplay**<br/>
+	**Simulation Overview**<br/>
+	**General User Sessions and Team-assignments**<br/>
+	**Leveling Up and More on User Sessions**<br/>
+**Data Set Overview**<br/>
+	**Data on In-App Purchases, Ad Clicks and Game-Specific Information**<br/>
+	**Schema of the Graph Database for Chats**<br/>
 
-**Introduction
-Description of Catch The Pink Flamingo Online Game**
+
 Data exploration is described in the [next section]().
 
 

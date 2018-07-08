@@ -20,7 +20,50 @@ There are some things to consider while designing an information system for this
 - In-game Purchases: Users are allowed in game purchases including binoculars to spot the mission specific flamingos, special flamingos that count for more than one grid point, ice blocks to freeze a mission for 20 seconds when needed, and trading cards to transfer the extra points from some grid cells to the ones without any points.
 - Game Completion: The game never ends, meaning that there will always be a more complicated next level. A challenge for Eglence Inc. is to keep the game interesting and engaging for players who have been around for a long time. They make use of big data analytics to make sure the veteran players are still around.
 
+# Overview of the Catch the Pink Flamingo Data Model
+
+The data generation scripts create several log files recording the activities of people playing Catch the Pink Flamingo. This document describes the fields in those log files.
+
+The image below is an Entity Relationship Diagram (ERD) for the Catch the Pink Flamingo game data model.
+
+![](https://github.com/eagronin/capstone-acquire/blob/master/entity-relationship-diagram.png?raw=true)
+
+## Gameplay
+
+Each user is a member of at most one team. When a new user starts playing the game, she is on a team by herself for the first level (i.e., playing the tutorial) and may join a team on subsequent levels.
+
+## Simulation Overview
+
+There are three distinct groups for each user with two main categories to contain these three groups. A user can be:
+
+Category 1: In a Team
+
+Group 1: Playing
+
+Group 2: Not Playing
+
+Category 2: Not in a Team
+
+Group 3: Unassigned
+
+## General User Sessions and Team-assignments
+
+When a user is in a team playing, they have a unique user session that starts when they start playing and ends when they stop playing.
+
+In either case, whenever a user is in a team, they will have a team-assignment recorded when they first joined the team but no more. In other words, when a user is unassigned (not in a team) and joins a team, a team-assignment is recorded.
+
+## Leveling Up and More on User Sessions
+
+Whenever the user is in a team (playing or not playing), they can level up whenever the team finishes playing a level. When they level up, two level-up events are recorded for the team, one for the end of the previous level and the other for the start of the current one.
+
+At the same time, all the users who are playing would end their current session, record it, and start new sessions with updated team_level values.
+
+
+
+
+
 # Data Set Overview
+The table below lists each of the files available for analysis with a short description of what is found in each one.
 
  File Name	| Description	| Fields 
 |:--- | :--- |:--- |
@@ -32,15 +75,8 @@ team-assignments.csv	| A line is added to this file each time a user joins a tea
 level-events.csv	| A line is added to this file each time a team starts or finishes a level in the game	| timestamp: when the event occurred. <br/><br/>eventId: a unique id for the event. <br/><br/>teamId: the id of the team. <br/><br/>teamLevel: the level started or completed. <br/><br/>eventType: the type of event, either start or end.
 user-session.csv | Each line in this file describes a user session, which denotes when a user starts and stops playing the game. Additionally, when a team goes to the next level in the game, the session is ended for each user in the team and a new one started. | timestamp: a timestamp denoting when the event occurred. <br/><br/>userSessionId: a unique id for the session. <br/><br/>userId: the current user's ID. <br/><br/>teamId: the current user's team. <br/><br/>assignmentId: the team assignment id for the user to the team. <br/><br/>sessionType: whether the event is the start or end of a session. <br/><br/>teamLevel: the level of the team during this session. <br/><br/>platformType: the type of platform of the user during this session. 
 game-clicks.csv	| A line is added to this file each time a user performs a click in the game. |	timestamp: when the click occurred. <br/><br/>clickId: a unique id for the click. <br/><br/>userId: the id of the user performing the click. <br/><br/>userSessionId: the id of the session of the user when the click is performed. <br/><br/>isHit: denotes if the click was on a flamingo (value is 1) or missed the flamingo (value is 0). <br/><br/>teamId: the id of the team of the user. <br/><br/>teamLevel: the current level of the team of the user.
-		
-		
-		
-		
-		
-		
-		
-		
-		
+combined_data.csv | Combines data from 3 of the log files: user-session.csv, buy-clicks.csv, and game-clicks.csv. | 
+userid: User ID <br/><br/>userSessionid: User session ID <br/><br/>team_level: User’s team level <br/><br/>platformType: Platform used by user <br/><br/>count_gameclicks: Total number of game clicks for user session <br/><br/>count_hits: Total number of game hits for user session <br/><br/>count_buyid: Total number of purchases for user session <br/><br/>avg_price: Average purchase price for user session
 				
 		
 		

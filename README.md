@@ -7,15 +7,12 @@ The project entails classification analysis using decision tree and cluster anal
 
 The analysis in this project was performed using Python, Spark, KNIME and Neo4j.
 
-This section includes the following sub-sections:
+This section is organized as follows:
 
-[create an anchor](#markdown-header-Data-Set-Overview)
-[]()
-[]()
-[]()
-[]()
-[]()
+Data Set Overview
 
+**Introduction
+Description of Catch The Pink Flamingo Online Game**
 Data exploration is described in the [next section]().
 
 

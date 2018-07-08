@@ -24,7 +24,7 @@ There are some things to consider while designing an information system for this
 
  File Name	| Description	| Fields 
 |:--- | :--- |:--- |
- ad-clicks.csv | A line is added to this file when a player clicks on an advertisement in the Flamingo app. | timestamp: when the click occurred. <br/><br/>txId: a unique id (within ad-clicks.log) for the click. <br/><br/>userSessionid: the id of the user <br/>session for the user who made the click.  <br/>teamid: the current team id of the user who made the click.  <br/>userid: the user id of the user who made the click. <br/>adId: the id of the ad clicked on. <br/>adCategory: the category/type of ad clicked on.
+ ad-clicks.csv | A line is added to this file when a player clicks on an advertisement in the Flamingo app. | timestamp: when the click occurred. <br/><br/>txId: a unique id (within ad-clicks.log) for the click. <br/><br/>userSessionid: the id of the user <br/><br/>session for the user who made the click.  <br/><br/>teamid: the current team id of the user who made the click.  <br/><br/>userid: the user id of the user who made the click. <br/><br/>adId: the id of the ad clicked on. <br/><br/>adCategory: the category/type of ad clicked on.
 		
 		
 		

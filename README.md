@@ -122,3 +122,5 @@ MERGE (u:User {id: toInteger(row[0])})
 MERGE (c:TeamChatSession {id: toInteger(row[1])}) 
 MERGE (u)-[:Join{timeStamp: row[2]}]->(c)
 ```
+
+Next step: [Data Exploration](https://eagronin.github.io/capstone-prepare/)

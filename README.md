@@ -7,20 +7,7 @@ The project entails classification analysis by fitting a decision tree and clust
 
 The analysis in this project was performed using Python, Spark, KNIME and Neo4j.
 
-This section is organized as follows:
-
-**Introduction**<br/>
-**Description of Catch The Pink Flamingo Online Game**<br/>
-**Overview of the Catch the Pink Flamingo Data Model**<br/>
-- Gameplay<br/>
-- Simulation Overview<br/>
-- General User Sessions and Team-assignments<br/>
-- Leveling Up and More on User Sessions<br/>
-
-**Data Set Overview**<br/>
-- Data on In-App Purchases, Ad Clicks and Game-Specific Information<br/>
-- Schema of the Graph Database for Chats<br/>
-
+In the remainder of this section we will first describe the Catch The Pink Flamingo game, then we will provide an overview of the Catch the Pink Flamingo data model and the data sets. 
 
 Data exploration is described in the [next section](https://eagronin.github.io/capstone-prepare/).
 

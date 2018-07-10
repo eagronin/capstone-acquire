@@ -61,21 +61,21 @@ The schema of the 6 CSV files used to construct the graph database for chats is 
 File Name | Description | Example
 |:--- | :--- | ---:|
 chat_create_team_chat.csv | A line is added to this file when a player creates a new chat with their team. | userid, teamid, TeamChatSessionID, timestamp<br/><br/> 559,48,6288,14567<br/> 876,15,6289,24244<br/> 1166,68,6290,65522
-chat_item_team_chat.csv | Creates nodes labeled ChatItems. Column 0 is User id, column 1 is the TeamChatSession id, column 2 is the ChatItem id (i.e., the id property of the ChatItem node), column 3 is the timestamp for an edge labeled "CreateChat". Also creates an edge labeled "PartOf" from the ChatItem node to the TeamChatSession node. This edge has a timeStamp property using the value from Column 3. | userid, teamchatsessionid, chatitemid, timestamp<br/><br/> 1,956,629,963,051,460,000,000<br/> 2,081,629,663,111,460,000,000<br/> 1,166,629,063,161,460,000,000
-chat_join_team_chat.csv | Creates an edge labeled "Joins" from User to TeamChatSession. The columns are the User id, TeamChatSession id and the timestamp of the Joins edge. | userid, TeamChatSessionID, teamstamp<br/><br/> 559,628,812,345<br/> 876,628,915,468<br/> 1,166,629,015,648
+chat_item_team_chat.csv | Creates nodes labeled ChatItems. Column 0 is User id, column 1 is the TeamChatSession id, column 2 is the ChatItem id (i.e., the id property of the ChatItem node), column 3 is the timestamp for an edge labeled "CreateChat". Also creates an edge labeled "PartOf" from the ChatItem node to the TeamChatSession node. This edge has a timestamp property using the value from Column 3. | userid, teamchatsessionid, chatitemid, timestamp<br/><br/> 1,956,629,963,051,460,000,000<br/> 2,081,629,663,111,460,000,000<br/> 1,166,629,063,161,460,000,000
+chat_join_team_chat.csv | Creates an edge labeled "Joins" from User to TeamChatSession. The columns are the User id, TeamChatSession id and the timestamp of the Joins edge. | userid, TeamChatSessionID, timestamp<br/><br/> 559,628,812,345<br/> 876,628,915,468<br/> 1,166,629,015,648
 chat_leave_team_chat.csv | Creates an edge labeled "Leaves" from User to TeamChatSession. The columns are the User id, TeamChatSession id and the timestamp of the Leaves edge. | userid, teamchatsessionid, timestamp<br/><br/> 124,468,211,464,241,000.00<br/> 107,468,381,464,243,000.00<br/> 35,067,771,464,246,600.00
-chat_mention_team_chat.csv | Creates an edge labeled "Mentioned". Column 0 is the id of the ChatItem, column 1 is the id of the User, and column 2 is the timeStamp of the edge going from the chatItem to the User. | ChatItem, userid, timeStamp<br/><br/> 63,492,508<br/> 63,662,491<br/> 6,371,104
+chat_mention_team_chat.csv | Creates an edge labeled "Mentioned". Column 0 is the id of the ChatItem, column 1 is the id of the User, and column 2 is the timestamp of the edge going from the chatItem to the User. | ChatItem, userid, timestamp<br/><br/> 63,492,508<br/> 63,662,491<br/> 6,371,104
 chat_respond_team_chat.csv | A line is added to this file when player with chatid2 responds to a chat post by another player with chatid1. | chatid1, chatid2, timestamp<br/><br/> 6,326,630,521,564<br/> 6,364,632,654,544<br/> 6,371,636,654,567
 
 Each of the 6 CSV files was loaded into Neo4j using the LOAD CSV command that reads each row of the file and then assigns the imported values to the nodes and edges of the graph.  
 
-For example, the code below loads the nodes and values from chat_join_team_chat.csv.  Each row in this file has 3 values: userid, TeamChatSessionID and teamStamp.  As the code reads each row of the file, it merges the imported value from the first column with a node of the type “User”, the value from the second column with a node of the type “TeamChatSession” and the value from the third column with an edge of the type “timeStamp”.  The code also specifies that this edge links each User to the User’s TeamChatSession.
+For example, the code below loads the nodes and values from chat_join_team_chat.csv.  Each row in this file has 3 values: userid, TeamChatSessionID and timestamp.  As the code reads each row of the file, it merges the imported value from the first column with a node of the type “User”, the value from the second column with a node of the type “TeamChatSession” and the value from the third column with an edge of the type “timestamp”.  The code also specifies that this edge links each User to the User’s TeamChatSession.
 
 ```GraphQL
 LOAD CSV FROM "file:///chat-data/chat_join_team_chat.csv" AS row 
 MERGE (u:User {id: toInteger(row[0])}) 
 MERGE (c:TeamChatSession {id: toInteger(row[1])}) 
-MERGE (u)-[:Join{timeStamp: row[2]}]->(c)
+MERGE (u)-[:Join{timestamp: row[2]}]->(c)
 ```
 
 Next step: [Data Exploration](https://eagronin.github.io/capstone-prepare/)

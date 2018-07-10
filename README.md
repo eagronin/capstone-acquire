@@ -5,7 +5,7 @@ The data for the project consists of 9 files with data on in-app purchases, ad c
 
 The project entails classification analysis by fitting a decision tree and cluster analysis using k-means.  It also uses graph analytics to identify the chattiest users / teams, longest conversations and active user groups. 
 
-The analysis in this project was performed using Python, Spark, KNIME and Neo4j.
+The analysis in this project was performed using Spark, Python, Splunk, KNIME and Neo4j.
 
 In the remainder of this section we will first describe the Catch The Pink Flamingo game, then we will provide an overview of the Catch the Pink Flamingo data model and the data sets. 
 

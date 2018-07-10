@@ -7,13 +7,13 @@ The project entails classification analysis by fitting a decision tree and clust
 
 The analysis in this project was performed using Spark, Python, Splunk, KNIME and Neo4j.
 
-In the remainder of this section we will first describe the Catch The Pink Flamingo game, then we will provide an overview of the Catch the Pink Flamingo data model and the data sets. 
+In the remainder of this section we will first describe the Catch the Pink Flamingo game, then we will provide an overview of the Catch the Pink Flamingo data model and the data sets. 
 
 Data exploration is described in the [next section](https://eagronin.github.io/capstone-prepare/).
 
 
-# Description of Catch The Pink Flamingo Online Game
-One of the products of an imaginary company Eglence Inc. is a highly popular mobile game called “Catch The Pink Flamingo”. The objective of the game is to catch as many Pink Flamingos as possible by following the missions provided by real-time prompts in the game and cover the map provided for each level. The levels get more complicated in mission speed and map complexity as the users move from level to level.
+# Description of Catch the Pink Flamingo Online Game
+One of the products of an imaginary company Eglence Inc. is a highly popular mobile game called “Catch the Pink Flamingo”. The objective of the game is to catch as many Pink Flamingos as possible by following the missions provided by real-time prompts in the game and cover the map provided for each level. The levels get more complicated in mission speed and map complexity as the users move from level to level.
 
 It’s a multi-user game where the players have to catch Pink Flamingos that randomly pop up on a gridded world map based on missions that change in real-time. For the player or team to move to the next complexity level, they need to have at least one point in every map grid cell, i.e., cover the whole world map. An example mission would be “Catch the Flamingos on land with stars on their belly” in which the player should only click on flamingos that match the mission criteria, in this case, stars and being on land. If the player tags any other flamingo on the map, he/she or his/her team gets a negative point (-1) on that map location.
 

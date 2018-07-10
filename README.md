@@ -116,7 +116,7 @@ Each of the 6 CSV files was loaded into Neo4j using the LOAD CSV command that re
 
 For example, the code below loads the nodes and values from chat_join_team_chat.csv.  Each row in this file has 3 values: userid, TeamChatSessionID and teamStamp.  As the code reads each row of the file, it merges the imported value from the first column with a node of the type “User”, the value from the second column with a node of the type “TeamChatSession” and the value from the third column with an edge of the type “timeStamp”.  The code also specifies that this edge links each User to the User’s TeamChatSession.
 
-```GraphQL
+```SQL
 LOAD CSV FROM "file:///chat-data/chat_join_team_chat.csv" AS row 
 MERGE (u:User {id: toInteger(row[0])}) 
 MERGE (c:TeamChatSession {id: toInteger(row[1])}) 
